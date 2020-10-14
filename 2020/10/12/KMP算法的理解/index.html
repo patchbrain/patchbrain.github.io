@@ -5,15 +5,27 @@
   
 
   
-  <title>Hexo</title>
+  <title>KMP算法的理解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="前言我是一名C++初学者，为了记录我的成长轨迹，我准备开始构建我blog， 以便在十天，百天，n天后看到自己以前写的东西来获得自信——原来 自己的进步也可以这么大，原来自己也可以一步一步接近那些日子看起 来很厉害的人。但是一直以来，我只是有输出一些东西的想法，从来没有 踏出过第一步。最近，看到大佬的一些建议，于是在出于记录轨迹和找工 作的这两个目的，我准备真正开始了！开端就用最近学习的数据结构中讲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法的理解">
+<meta property="og:url" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言我是一名C++初学者，为了记录我的成长轨迹，我准备开始构建我blog， 以便在十天，百天，n天后看到自己以前写的东西来获得自信——原来 自己的进步也可以这么大，原来自己也可以一步一步接近那些日子看起 来很厉害的人。但是一直以来，我只是有输出一些东西的想法，从来没有 踏出过第一步。最近，看到大佬的一些建议，于是在出于记录轨迹和找工 作的这两个目的，我准备真正开始了！开端就用最近学习的数据结构中讲">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-11-22-56-38.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-13-09-08-44.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-13-09-27-58.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-13-09-34-15.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-13-09-39-20.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/!%5B%5D(2020-10-14-16-05-37.png)%20%20.png">
+<meta property="og:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-14-16-23-04.png">
+<meta property="article:published_time" content="2020-10-12T10:28:16.000Z">
+<meta property="article:modified_time" content="2020-10-14T08:32:07.696Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/2020-10-11-22-56-38.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,9 +74,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-KMP算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-KMP算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/" class="article-date">
   <time datetime="2020-10-12T10:28:16.000Z" itemprop="datePublished">2020-10-12</time>
@@ -77,8 +87,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/12/KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/">KMP算法的理解</a>
+    <h1 class="article-title" itemprop="name">
+      KMP算法的理解
     </h1>
   
 
@@ -132,101 +142,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hexo常用的一些功能" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/11/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD/" class="article-date">
-  <time datetime="2020-10-11T02:28:16.000Z" itemprop="datePublished">2020-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/11/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD/">hexo博客一些常用功能</a>
-    </h1>
+    <a href="/2020/10/11/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo博客一些常用功能</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>hexo s</strong> : 启动博客<br><strong>hexo n</strong> : 创建一篇文章<br><strong>hexo g(generate)</strong> : 生成静态文件<br><strong>hexo d(deploy)</strong> : 部署博客到git  </p>
-<hr>
-<p><strong>一般发布或者修改博客后的操作：</strong> ： 清楚缓存——&gt;生成静态文件——&gt;启动服务器——&gt;部署</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean -&gt; hexo g -&gt; hexo s -&gt;hexo d </span><br></pre></td></tr></table></figure>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/11/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD/" data-id="ckg95f2uk0002y0vybblh8d1g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/11/hello-world/" class="article-date">
-  <time datetime="2020-10-11T02:22:39.842Z" itemprop="datePublished">2020-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/11/hello-world/" data-id="ckg95f2uh0001y0vy4pmb7o8e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
