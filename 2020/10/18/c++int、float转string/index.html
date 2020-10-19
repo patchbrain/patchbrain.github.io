@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>c++int、float转string | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="方法目录1. stringstream2. sprintf3. to_stringstringstream头文件包含 1#include&lt;sstream&gt;  int 转 string 123456int num &#x3D; 200;stringstream ss;string s;ss&lt;&lt;num;ss&gt;&gt;s;cout&lt;&lt;s&lt;&lt;endl;  flo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++int、float转string">
+<meta property="og:url" content="http://example.com/2020/10/18/c++int%E3%80%81float%E8%BD%ACstring/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="方法目录1. stringstream2. sprintf3. to_stringstringstream头文件包含 1#include&lt;sstream&gt;  int 转 string 123456int num &#x3D; 200;stringstream ss;string s;ss&lt;&lt;num;ss&gt;&gt;s;cout&lt;&lt;s&lt;&lt;endl;  flo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-18T13:48:17.000Z">
+<meta property="article:modified_time" content="2020-10-19T06:22:18.895Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c++int、float转string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/18/c++int%E3%80%81float%E8%BD%ACstring/" class="article-date">
+  <time datetime="2020-10-18T13:48:17.000Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c++int、float转string
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="方法目录"><a href="#方法目录" class="headerlink" title="方法目录"></a>方法目录</h1><h3 id="1-stringstream"><a href="#1-stringstream" class="headerlink" title="1. stringstream"></a>1. stringstream</h3><h3 id="2-sprintf"><a href="#2-sprintf" class="headerlink" title="2. sprintf"></a>2. sprintf</h3><h3 id="3-to-string"><a href="#3-to-string" class="headerlink" title="3. to_string"></a>3. to_string</h3><h2 id="stringstream"><a href="#stringstream" class="headerlink" title="stringstream"></a>stringstream</h2><p>头文件包含</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>int 转 string</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">200</span>;</span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line">ss&lt;&lt;num;</span><br><span class="line">ss&gt;&gt;s;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>float 转 string</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f = <span class="number">10.52</span>;</span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line">ss&lt;&lt;f;</span><br><span class="line">ss&gt;&gt;s;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sprintf-安全版本为sprintf-s"><a href="#sprintf-安全版本为sprintf-s" class="headerlink" title="sprintf(安全版本为sprintf_s)"></a>sprintf(安全版本为sprintf_s)</h2><p>只针对char*(char[]类型  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s[<span class="number">20</span>];</span><br><span class="line"><span class="keyword">float</span> f = <span class="number">10.522</span>;</span><br><span class="line">sprintf_s(s, <span class="string">&quot;dasd%.2lf&quot;</span>, f);</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">ss</span><span class="params">(s)</span></span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; ss;</span><br></pre></td></tr></table></figure>
+
+<h2 id="to-string"><a href="#to-string" class="headerlink" title="to_string"></a>to_string</h2><p>功能强大，基本所有类型的数都可以转</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num=<span class="number">123</span>;</span><br><span class="line"><span class="built_in">string</span> str=to_string(num);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但如果为浮点数，则保留小数位数为6<br>控制小数位数还是使用stringstream</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line"><span class="keyword">float</span> f=<span class="number">1.1545322</span></span><br><span class="line">ss&lt;&lt;fixed&lt;&lt;setprecision(<span class="number">3</span>)&lt;&lt;f;</span><br><span class="line"><span class="built_in">string</span> ret=ss.str();</span><br><span class="line">ss.clear();</span><br></pre></td></tr></table></figure>
+
+<p>另外，如果要string转数类型，则使用<br><strong>字符串转整型：</strong><br><strong>stoi, stol, stoll</strong></p>
+<p><strong>字符串转浮点型：</strong><br><strong>stof, stod, stold</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/18/c++int%E3%80%81float%E8%BD%ACstring/" data-id="ckgg5k25a0000xkvyaoowffwt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/14/%E5%AF%B9KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">对KMP算法的理解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/18/c++int%E3%80%81float%E8%BD%ACstring/">c++int、float转string</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/14/%E5%AF%B9KMP%E7%AE%97%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/">对KMP算法的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD/">hexo博客一些常用功能</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
