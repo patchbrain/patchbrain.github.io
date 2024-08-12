@@ -1,0 +1,3 @@
+---
+BUNDLE_BUILD__FFI: "--with-cflags=-Wno-implicit-function-declaration"
+BUNDLE_FORCE_RUBY_PLATFORM: "true"
