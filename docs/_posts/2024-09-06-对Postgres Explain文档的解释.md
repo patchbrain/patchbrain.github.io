@@ -5,25 +5,23 @@ date:   2024-09-06 10:40:00 +0800
 categories: Postgres
 excerpt: "Postgres的执行计划可以帮助我们查看SQL背后的执行原理，更容易定位SQL中的性能优化点"
 ---
-<font style="color:rgb(0, 0, 0);">以该执行计划的部分文本为例：</font>`<font style="color:rgb(0, 0, 0);"> Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)</font>`<font style="color:rgb(0, 0, 0);">，对应SQL:</font>`<font style="color:rgb(0, 0, 0);">EXPLAIN SELECT * FROM tenk1;</font>`
+以该执行计划的部分文本为例： `Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)`，对应SQL:`EXPLAIN SELECT * FROM tenk1;`
 
-<font style="color:rgb(0, 0, 0);">从左到右：</font>
+从左到右：
 
-`<font style="color:rgb(0, 0, 0);">0.00</font>`<font style="color:rgb(0, 0, 0);">：启动成本，扫描第一行数据之前的成本</font>
+`0.00`：启动成本，扫描第一行数据之前的成本
 
-`<font style="color:rgb(0, 0, 0);">458.00</font>`<font style="color:rgb(0, 0, 0);">: 检索所有行的成本</font>
+`458.00`: 检索所有行的成本
 
-`<font style="color:rgb(0, 0, 0);">10000</font>`<font style="color:rgb(0, 0, 0);">: 该node输出的行数</font>
+`10000`: 该node输出的行数
 
-`<font style="color:rgb(0, 0, 0);">244</font>`<font style="color:rgb(0, 0, 0);">: 输出的平均每行大小(bytes)</font>
+`244`: 输出的平均每行大小(bytes)
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);">成本单位的划定：通常以在磁盘中获取页面作为成本单位，也就是</font>`<font style="color:rgb(0, 0, 0);">seq_page_cost=1</font>`<font style="color:rgb(0, 0, 0);">，其他操作的成本根据</font>`<font style="color:rgb(0, 0, 0);">seq_page_cost</font>`<font style="color:rgb(0, 0, 0);">来设定</font>
+成本单位的划定：通常以在磁盘中获取页面作为成本单位，也就是`seq_page_cost=1`，其他操作的成本根据`seq_page_cost`来设定
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);">父节点的成本应该包含所有子节点成本。另外</font>`<font style="color:rgb(0, 0, 0);">rows</font>`<font style="color:rgb(0, 0, 0);">这个字段并不代表扫描的行数，而是该node发往上层进行处理的行数。</font>
+父节点的成本应该包含所有子节点成本。另外`rows`这个字段并不代表扫描的行数，而是该`node`发往上层进行处理的行数。
 
 <h2 id="aTAUS">加上Where条件</h2>
 SQL为`EXPLAIN SELECT * FROM tenk1 WHERE unique1 < 7000;`
