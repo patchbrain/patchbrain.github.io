@@ -5,6 +5,8 @@ date:   2024-09-06 10:40:00 +0800
 categories: Postgres
 excerpt: "Postgres的执行计划可以帮助我们查看SQL背后的执行原理，更容易定位SQL中的性能优化点"
 ---
+参考文档链接: https://www.postgresql.org/docs/current/using-explain.html
+
 以该执行计划的部分文本为例： `Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)`，对应SQL:`EXPLAIN SELECT * FROM tenk1;`
 
 从左到右：
